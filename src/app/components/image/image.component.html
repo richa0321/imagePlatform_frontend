@@ -1,0 +1,34 @@
+<div class="image_container">
+  <h2>Image Details</h2>
+  <form [formGroup]="imageForm" class="image-form">
+    <div>
+      <label for="title">Title:</label>
+      <input id="title" type="text" formControlName="title" required>
+      <div *ngIf="f['title'].invalid && (f['title'].dirty || f['title'].touched)">
+        <div *ngIf="f['title'].errors && f['title'].errors['required']">Title is required.</div>
+      </div>
+    </div>
+
+    <div>
+      <label for="description">Description:</label>
+      <textarea id="description" formControlName="description"></textarea>
+    </div>
+    <div>
+      <label for="tags">Tags:</label>
+      <input id="tags" type="text" #tagInput (keydown.enter)="addTag(tagInput.value); tagInput.value=''">
+      <div class="tags">
+        <span *ngFor="let tag of tags; let i = index" class="tag">{{ tag }} <button class="bt-tag-red" type="button"
+            (click)="removeTag(i)">x</button></span>
+      </div>
+    </div>
+    <div>
+      <label for="">Image File:</label>
+      <input id="imageFile" type="file" [(ngModel)]="selectedFile" (change)="onFileChange($event)" formControlName=""
+        required>
+    </div>
+
+    <button type="button" [disabled]="imageForm.invalid" (click)="onSubmit()">Submit</button>
+  </form>
+
+  <button (click)="navigateToHome()">Home</button>
+</div>

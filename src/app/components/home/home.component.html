@@ -1,0 +1,37 @@
+<div class="container">
+  <h2>Welcome</h2>
+
+  <div class="button-grid">
+    <button class="bt-red" (click)="logout()">Logout</button>
+    <button class="bt-blue" (click)="navigateToUpload()">Add File</button>
+  </div>
+</div>
+
+<div class="table-container" *ngIf="images.length > 0">
+  <table>
+    <thead>
+      <tr>
+        <th>Image</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let image of images">
+        <td>
+          <img [src]="image.imageUrl" alt="Image" width="200">
+          <div class="overlay">
+            <p>Photographer: {{ image.photographer_name }}</p>
+            <p>Description: {{ image.description }}</p>
+            <p>Tags:</p>
+            <div class="tags">
+              <span *ngFor="let tag of image.tags">{{ tag }}</span>
+            </div>
+          </div>
+        </td>
+        <td>
+          <button class="bt-red" (click)="deleteImage(image._id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
