@@ -5,11 +5,48 @@ html, body {
     font-family: Roboto, "Helvetica Neue", sans-serif;
   }
   
+  /* .container {
+    max-width: 600px;
+    margin: 0 auto;
+  } */
   .container {
     max-width: 600px;
     margin: 0 auto;
-  }
-  
+    padding: 20px; /* Add padding to the container */
+}
+
+.search-container {
+  display: flex; /* Use flexbox for layout */
+  justify-content: center; /* Center the items horizontally */
+  align-items: center; /* Center the items vertically */
+  margin-bottom: 20px; /* Add some space below the search container */
+}
+
+.search-container input[type="text"] {
+  width: 40%; /* Adjust width as needed */
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-sizing: border-box;
+  margin-right: 10px; /* Space between input and button */
+  flex-shrink: 0; /* Prevent the input from shrinking */
+}
+
+.search-container button {
+  background-color: #007bff; /* Blue background */
+  color: white;
+  border: none;
+  padding: 10px 10px;
+  cursor: pointer;
+  border-radius: 3px;
+  font-size: 14px;
+  flex-shrink: 0; /* Prevent the button from shrinking */
+}
+
+.search-container button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
   .button-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);

@@ -21,7 +21,8 @@ export class ImageComponent {
     this.imageForm = this.formBuilder.group({
       title: ['', Validators.required],
       description: [''],
-      tags: [[]]
+      tags: [[]],
+      photographer_name:['']
       // imageFile: ['', Validators.required]
     });
   }
@@ -55,6 +56,7 @@ export class ImageComponent {
     }
     const formData = new FormData();
     formData.append('title', this.imageForm.value.title);
+    formData.append('photographer_name', this.imageForm.value.photographer_name)
     formData.append('description', this.imageForm.value.description);
     formData.append('file', this.selectedFile);
     this.tags.forEach(tag => {

@@ -1,12 +1,16 @@
 <div class="container">
-  <h2>Welcome</h2>
+  <h2>Welcome,  {{username}}</h2>
 
   <div class="button-grid">
     <button class="bt-red" (click)="logout()">Logout</button>
     <button class="bt-blue" (click)="navigateToUpload()">Add File</button>
   </div>
 </div>
-
+<div class="search-container" *ngIf="images.length > 0">
+  <input type="text" [(ngModel)]="keyword" placeholder="Search by photographer name, image title, image tags">
+  <button (click)="onSearch()">Search</button>
+</div>
+ 
 <div class="table-container" *ngIf="images.length > 0">
   <table>
     <thead>
@@ -20,6 +24,7 @@
         <td>
           <img [src]="image.imageUrl" alt="Image" width="200">
           <div class="overlay">
+            <p>Title: {{ image.title }}</p>
             <p>Photographer: {{ image.photographer_name }}</p>
             <p>Description: {{ image.description }}</p>
             <p>Tags:</p>

@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class AuthService {
   private apiUrl = 'https://imageplatform-backend.onrender.com'; // backend URL
+  // private apiUrl = 'http://localhost:3000'; // Your backend URL
 
   constructor(private http: HttpClient, private router: Router) {}
 

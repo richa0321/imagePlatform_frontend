@@ -3,11 +3,12 @@ import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FileServiceService } from '../../services/file-service.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -15,6 +16,8 @@ export class HomeComponent {
   images: any[] = [];
   showOverlay: boolean = false;
   imageRows: any[][] = [];
+  keyword=''
+  username: any=''
   constructor(private authService: AuthService, private fileService: FileServiceService, private router: Router) {}
 
   logout() {
@@ -26,9 +29,16 @@ export class HomeComponent {
   }
 
   ngOnInit(): void {
+    this.username = localStorage.getItem('user')
     this.loadImages();
   }
 
+  onSearch() {
+  this.fileService.searchImages(this.keyword).subscribe(res => {
+    this.images = res;
+  });
+  }
+  
   loadImages() {
     this.fileService.getImages().subscribe((res)=> {
       this.images = res.data;
