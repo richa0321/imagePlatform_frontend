@@ -23,7 +23,6 @@ export class ImageComponent {
       description: [''],
       tags: [[]],
       photographer_name:['']
-      // imageFile: ['', Validators.required]
     });
   }
   addTag(tag: string): void {
