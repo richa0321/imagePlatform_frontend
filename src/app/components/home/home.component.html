@@ -6,7 +6,7 @@
     <button class="bt-blue" (click)="navigateToUpload()">Add File</button>
   </div>
 </div>
-<div class="search-container" *ngIf="images.length > 0">
+<div class="search-container">
   <input type="text" [(ngModel)]="keyword" placeholder="Search by photographer name, image title, image tags">
   <button (click)="onSearch()">Search</button>
 </div>
